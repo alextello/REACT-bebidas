@@ -24,7 +24,7 @@ const RecetasProvider = (props) => {
 		}
 	}, [busquedaReceta, categoria, consultar, nombre]);
 	return (
-		<RecetasContext.Provider value={{ setBusquedaReceta, setConsultar }}>
+		<RecetasContext.Provider value={{ setBusquedaReceta, setConsultar, receta }}>
 			{props.children}
 		</RecetasContext.Provider>
 	);
