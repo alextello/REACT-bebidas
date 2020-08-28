@@ -17,7 +17,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
 	paper: {
 		position: 'absolute',
-		width: 400,
+		width: 500,
 		backgroundColor: theme.palette.background.paper,
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
@@ -38,6 +38,19 @@ const Receta = ({ receta }) => {
 	};
 	// Extraer valores del context
 	const { infoReceta, setIdReceta, setReceta } = useContext(ModalContext);
+	const mostrarIngredientes = (infoReceta) => {
+		let ingredientes = [];
+		for (let i = 1; i < 16; i++) {
+			if (infoReceta[`strIngredient${i}`]) {
+				ingredientes.push(
+					<li>
+						{infoReceta[`strIngredient${i}`]} {infoReceta[`strMeasure${i}`]}{' '}
+					</li>
+				);
+			}
+		}
+		return ingredientes;
+	};
 	return (
 		<div className="col-md-4 mb-3">
 			<div className="card">
@@ -71,6 +84,8 @@ const Receta = ({ receta }) => {
 								src={infoReceta.strDrinkThumb}
 								alt={infoReceta.strDrink}
 							/>
+							<h3>Ingredientes y cantidades</h3>
+							<ul>{mostrarIngredientes(infoReceta)}</ul>
 						</div>
 					</Modal>
 				</div>
@@ -78,7 +93,5 @@ const Receta = ({ receta }) => {
 		</div>
 	);
 };
-
-Receta.propTypes = {};
 
 export default Receta;

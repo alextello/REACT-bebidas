@@ -24,8 +24,11 @@ const Formulario = () => {
 			className="col-12"
 			onSubmit={(e) => {
 				e.preventDefault();
-				setBusquedaReceta(busqueda);
-				setConsultar(true);
+				const aux = Object.keys(busqueda).map((val) => busqueda[val]);
+				if (aux[0] && aux[1]) {
+					setBusquedaReceta(busqueda);
+					setConsultar(true);
+				}
 			}}
 		>
 			<fieldset className="text-center mb-2">

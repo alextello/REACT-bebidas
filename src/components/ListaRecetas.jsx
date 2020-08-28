@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { RecetasContext } from '../Context/RecetasContext';
 import Receta from './Receta';
-import PropTypes from 'prop-types';
 
 const ListaRecetas = (props) => {
 	// extraer recetas
@@ -14,7 +13,5 @@ const ListaRecetas = (props) => {
 		</div>
 	);
 };
-
-ListaRecetas.propTypes = {};
 
 export default ListaRecetas;
