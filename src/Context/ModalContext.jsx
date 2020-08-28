@@ -1,5 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import Modal from '@material-ui/core/Modal';
+import { makeStyles } from '@material-ui/core/styles';
 
 // crear el context
 export const ModalContext = createContext();
@@ -7,7 +9,7 @@ export const ModalContext = createContext();
 const ModalProvider = (props) => {
 	// state del provider
 	const [idReceta, setIdReceta] = useState(null);
-	const [receta, setReceta] = useState({});
+	const [infoReceta, setReceta] = useState({});
 
 	// una vez haya una receta, llamar la API
 	useEffect(() => {
@@ -22,7 +24,9 @@ const ModalProvider = (props) => {
 	return (
 		<ModalContext.Provider
 			value={{
+				infoReceta,
 				setIdReceta,
+				setReceta,
 			}}
 		>
 			{props.children}
